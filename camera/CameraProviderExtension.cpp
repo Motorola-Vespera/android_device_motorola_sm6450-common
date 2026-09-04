@@ -64,10 +64,18 @@ int32_t getTorchStrengthLevelExt() {
 }
 
 void setTorchStrengthLevelExt(int32_t torchStrength, bool enabled) {
+    // Always drop the switch first. If the torch was already on and only the
+    // strength changed, this forces a fresh edge so the new brightness value
+    // actually gets re-latched by the flash IC, instead of only updating the
+    // cached sysfs value with no physical effect.
     set(TOGGLE_SWITCH, 0);
+
+    // On torch off, framework passes the default level with enabled=false.
+    // Leaving the torch LEDs at a non-zero brightness keeps them armed in the
+    // flash driver, which blocks the camera HAL from firing flash later.
     for (auto& path : kTorchLedPaths) {
         auto node = path + "/" + TORCH_BRIGHTNESS;
-        set(node, torchStrength);
+        set(node, enabled ? torchStrength : 0);
     }
 
     if (enabled)
