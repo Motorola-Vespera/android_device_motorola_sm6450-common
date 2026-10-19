@@ -169,6 +169,11 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Fingerprint
+ifeq ($(TARGET_HAS_UDFPS), true)
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint-service.moto_parrot_fod
+endif
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
@@ -437,7 +442,8 @@ PRODUCT_COPY_FILES += \
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
-    hardware/motorola/vintf/device_framework_matrix.xml
+    hardware/motorola/vintf/device_framework_matrix.xml \
+    $(COMMON_PATH)/configs/vintf/device_framework_matrix.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix_aidl.xml
 DEVICE_MANIFEST_FILE += \
     $(CONFIG_HAL_SRC_DIR)/manifest_audio_qti_services.xml \

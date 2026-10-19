@@ -1,0 +1,2 @@
+# Fingerprint
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.moto_parrot_fod u:object_r:hal_fingerprint_default_exec:s0
