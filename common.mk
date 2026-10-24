@@ -266,7 +266,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     MotoActions \
     MotoCommonOverlay \
-    MotoNrEnabler
+    MotoExtTelephony
 
 # NFC
 PRODUCT_PACKAGES += \
