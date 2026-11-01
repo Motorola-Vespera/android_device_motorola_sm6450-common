@@ -214,6 +214,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk \
+    fstab.qcom.zram \
     init.qcom.recovery.rc \
     init.class_main.sh \
     init.mmi.boot.sh \

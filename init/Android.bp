@@ -11,6 +11,12 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fstab.qcom.zram",
+    src: "fstab.qcom.zram",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.qcom.rc",
     src: "init.qcom.rc",
     sub_dir: "init/hw",
