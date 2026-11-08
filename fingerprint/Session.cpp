@@ -57,17 +57,17 @@ ndk::ScopedAStatus Session::close() {
     return mSession->close();
 }
 
-ndk::ScopedAStatus Session::onPointerDown(int32_t pointerId, int32_t x, int32_t y, float minor,
-                                          float major) {
+// The stock HAL reads display touches from the input device on its own, so pointer events are
+// consumed here to drive the HBM and deliberately not forwarded to it.
+ndk::ScopedAStatus Session::onPointerDown(int32_t, int32_t, int32_t, float, float) {
     // Illumination must be up before the stock HAL starts capturing.
     mController->enableHighBrightFod();
-    return mSession->onPointerDown(pointerId, x, y, minor, major);
+    return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus Session::onPointerUp(int32_t pointerId) {
-    auto ret = mSession->onPointerUp(pointerId);
+ndk::ScopedAStatus Session::onPointerUp(int32_t) {
     mController->disableHighBrightFod();
-    return ret;
+    return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::onUiReady() {
@@ -91,25 +91,23 @@ ndk::ScopedAStatus Session::detectInteractionWithContext(
     return mSession->detectInteractionWithContext(context, out);
 }
 
-ndk::ScopedAStatus Session::onPointerDownWithContext(const PointerContext& context) {
+ndk::ScopedAStatus Session::onPointerDownWithContext(const PointerContext&) {
     mController->enableHighBrightFod();
-    return mSession->onPointerDownWithContext(context);
+    return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus Session::onPointerUpWithContext(const PointerContext& context) {
-    auto ret = mSession->onPointerUpWithContext(context);
+ndk::ScopedAStatus Session::onPointerUpWithContext(const PointerContext&) {
     mController->disableHighBrightFod();
-    return ret;
+    return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::onContextChanged(const OperationContext& context) {
     return mSession->onContextChanged(context);
 }
 
-ndk::ScopedAStatus Session::onPointerCancelWithContext(const PointerContext& context) {
-    auto ret = mSession->onPointerCancelWithContext(context);
+ndk::ScopedAStatus Session::onPointerCancelWithContext(const PointerContext&) {
     mController->disableHighBrightFod();
-    return ret;
+    return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::setIgnoreDisplayTouches(bool shouldIgnore) {
