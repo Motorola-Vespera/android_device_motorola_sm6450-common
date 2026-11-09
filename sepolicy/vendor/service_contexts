@@ -1,3 +1,10 @@
 # Fingerprint
-android.hardware.biometrics.fingerprint.IFingerprint/wrapper             u:object_r:hal_fingerprint_service:s0
-com.motorola.hardware.biometric.fingerprint.IMotoFingerPrint/wrapper     u:object_r:hal_fingerprint_service:s0
+android.hardware.biometrics.fingerprint.IFingerprint/wrapper                        u:object_r:hal_fingerprint_service:s0
+com.motorola.hardware.biometric.fingerprint.IMotoFingerPrint/wrapper                u:object_r:hal_fingerprint_service:s0
+com.motorola.hardware.biometric.fingerprint.IMotoCaptiveSensorTest/default          u:object_r:hal_fingerprint_service:s0
+com.motorola.hardware.biometric.fingerprint.IMotoFodSensorTest/default              u:object_r:hal_fingerprint_service:s0
+com.motorola.hardware.biometric.fingerprint.IMotoFpsNavigate/default                u:object_r:hal_fingerprint_service:s0
+vendor.goodix.hardware.biometrics.fingerprint.IGoodixFingerprintDaemon/default      u:object_r:hal_fingerprint_service:s0
+
+# Secure Element
+android.hardware.secure_element.ISecureElement/eSE1                                 u:object_r:hal_secure_element_service:s0

@@ -1,0 +1,2 @@
+set_prop(vendor_init, vendor_adsprpc_prop)
+set_prop(vendor_init, vendor_cnd_prop)
