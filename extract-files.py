@@ -106,6 +106,9 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
     'vendor/lib64/libperfgluelayer.so': blob_fixup()
         .sig_replace('87 08 00 94', '1F 20 03 D5'),
+    'vendor/lib64/libqti-scenariod.so': blob_fixup()
+        .sig_replace('D5 02 00 94 40 00 80 12', '1F 20 03 D5')
+        .sig_replace('65 01 00 94 40 00 80 12', '1F 20 03 D5'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
