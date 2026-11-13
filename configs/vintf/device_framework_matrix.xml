@@ -15,4 +15,11 @@
             <instance>wrapper</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>com.motorola.hardware.ifaa</name>
+        <interface>
+            <name>IIFAADevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
