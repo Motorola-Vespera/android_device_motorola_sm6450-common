@@ -676,3 +676,8 @@ subsystem mem_buf_vm
 # DisplayFeatures
 /sys/devices/platform/soc/soc:qcom,dsi-display-primary dc 0660 system system
 /sys/devices/platform/soc/soc:qcom,dsi-display-primary hbm 0660 system system
+
+# Torch control
+/sys/devices/platform/soc/c42d000.qcom,spmi/spmi-0/0-05/c42d000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:torch_0 brightness 0660 cameraserver camera
+/sys/devices/platform/soc/c42d000.qcom,spmi/spmi-0/0-05/c42d000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:torch_1 brightness 0660 cameraserver camera
+/sys/devices/platform/soc/c42d000.qcom,spmi/spmi-0/0-05/c42d000.qcom,spmi:qcom,pm6150l@5:qcom,leds@d300/leds/led:switch_2 brightness 0660 cameraserver camera
